@@ -2,7 +2,7 @@
     "name": "panman/homerun-jobs",
     "description": "Get jobs from homerun",
     "type": "craft-plugin",
-    "version": "1",
+    "version": "1.0.1",
     "keywords": [
         "craft",
         "cms",
