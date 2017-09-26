@@ -27,12 +27,13 @@ To install the plugin, follow these instructions.
 -Insert text here-
 
 ## Configuring Homerun Jobs
-
--Insert text here-
+It looks for an enviroment variable named `HOMERUN_APIKEY`
 
 ## Using Homerun Jobs
-
--Insert text here-
+In a twig template, place `<script>
+var homerun= {{homerunJobs() | raw }};
+</script>`
+This will create a JS var with the jobs
 
 ## Homerun Jobs Roadmap
 
