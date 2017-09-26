@@ -1,0 +1,50 @@
+{
+    "name": "panman/homerun-jobs",
+    "description": "Get jobs from homerun",
+    "type": "craft-plugin",
+    "version": "1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "homerun jobs"
+    ],
+    "support": {
+        "docs": "https://github.com/PanMan/homerun-jobs/blob/master/README.md",
+        "issues": "https://github.com/PanMan/homerun-jobs/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PanMan",
+            "homepage": "http://panman.nl"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "~3.0.0-beta.19"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "panman\\homerunjobs\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Homerun Jobs",
+        "handle": "homerun-jobs",
+        "schemaVersion": "1",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/PanMan/homerun-jobs/master/CHANGELOG.md",
+        "components": {
+            "homerunjobs": "panman\\homerunjobs\\services\\Homerunjobs"
+        },
+        "class": "panman\\homerunjobs\\HomerunJobs"
+    }
+}
