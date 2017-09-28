@@ -6,7 +6,7 @@ Get jobs from homerun
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0-beta.19 or later.
 
 ## Installation
 
@@ -31,14 +31,14 @@ It looks for an enviroment variable named `HOMERUN_APIKEY`
 
 ## Using Homerun Jobs
 In a twig template, place `<script>
-var homerun= {{homerunJobs() | raw }};
+var window.homerun= {{homerunJobs() | raw }};
 </script>`
 This will create a JS var with the jobs
 
 ## Homerun Jobs Roadmap
 
 Some things to do, and ideas for potential features:
-
+* Add some caching
 * Release it
 
 Brought to you by [PanMan](http://panman.nl)

@@ -16,6 +16,7 @@ use Craft;
 use craft\elements\Entry;
 
 
+
 /**
  * Twig can be extended in many ways; you can add extra tags, filters, tests, operators,
  * global variables, and functions. You can even extend the parser itself with
@@ -52,7 +53,7 @@ class HomerunJobsTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
+            // new \Twig_SimpleFilter('someFilter', [$this, 'someInternalFunction']),
         ];
     }
 
@@ -76,63 +77,37 @@ class HomerunJobsTwigExtension extends \Twig_Extension
      *
      * @param null $text
      *
-     * @return string
+     * @return object
      */
-    public function someInternalFunction($text = null)
-    {
-        $result = $text . " in the way";
-
-        return $result;
-    }
-
     public function getHomerunJobs($text = null)
     {
         //Get homerun slugs from craft and use that to fire request to homerun and return
 
-        // {% set homerunSlugs = [] %}
-        // {% for company in craft.entries.section('companies') %}
-        //     {% if company.companyHomerunSlug is not empty %}
-        //         {% set homerunSlugs = homerunSlugs|merge([company.companyHomerunSlug]) %}
-        //     {% endif %}
-        // {% endfor %}
-
-
         $entries = Entry::find()
             ->section('companies')
-            // ->limit(10)
-             // ->select('companyHomerunSlug') //Somehow doesnt work
-            // ->column();
+            // ->select('companyHomerunSlug') //Somehow doesnt work
             ->all();
-        $slugs=[];
 
+        $slugs=[];
         foreach ($entries as $item){
             if ($item->companyHomerunSlug){
                 $slugs[]=$item->companyHomerunSlug;
             }
         }
 
-        // return phpinfo();
-
-        $baseurl="https://api.homerun.co/v1/tq-jobs?companies=".join(',',$slugs);// $_GET['companies'];
-        //Call with: http://localhost:8002/api/homerun?companies=fashiontradecom,patientjourneyapp
-        $apiKey = getenv('HOMERUN_APIKEY');
-
+        $baseurl="https://api.homerun.co/v1/tq-jobs?companies=".join(',',$slugs);
         $curl = curl_init();
         // Set some options - we are passing in a useragent too here
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $baseurl,
-            CURLOPT_USERAGENT => 'TQ Site',
-            CURLOPT_USERPWD => $apiKey.':'
+            CURLOPT_USERAGENT => 'Craft 3 Homerun Plugin',
+            CURLOPT_USERPWD => getenv('HOMERUN_APIKEY').':'
         ));
         // Send the request & save response to $resp
         $resp = curl_exec($curl);
         // Close request to clear up some resources
         curl_close($curl);
         return $resp;
-        // return json_encode($resp);
-        // $result = $text . " in the way";
-
-        // return $result;
     }
 }

@@ -10,7 +10,7 @@
 
 namespace panman\homerunjobs;
 
-use panman\homerunjobs\services\Homerunjobs as HomerunjobsService;
+// use panman\homerunjobs\services\Homerunjobs as HomerunjobsService;
 use panman\homerunjobs\twigextensions\HomerunJobsTwigExtension;
 
 use Craft;
