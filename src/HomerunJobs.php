@@ -69,7 +69,7 @@ class HomerunJobs extends Plugin
         self::$plugin = $this;
 
         // Add in our Twig extensions
-        Craft::$app->view->twig->addExtension(new HomerunJobsTwigExtension());
+        Craft::$app->view->registerTwigExtension(new HomerunJobsTwigExtension());
 
         // Do something after we're installed
         Event::on(
