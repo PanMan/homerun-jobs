@@ -68,7 +68,7 @@ class HomerunJobsTwigExtension extends \Twig_Extension
     {
         return [
             // new \Twig_SimpleFunction('someFunction', [$this, 'someInternalFunction']),
-            new \Twig_SimpleFunction('homerunJobs', [$this, 'getHomerunJobs']),
+            new \Twig_SimpleFunction('homerunJobs', [$this, 'getHomerunJobs','getCompanyData']),
         ];
     }
 
